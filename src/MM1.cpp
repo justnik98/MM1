@@ -78,6 +78,8 @@ void MM1::modelingv1(double in, double u, size_t num) {
     size_t outCount = 0;
     delay = 0;
     meanQlen = 0;
+    emptyP1 = 0;
+    emptyP2 = 0;
     double t = 0;
     double tmp = 0;
     double tU = 0;
@@ -136,6 +138,8 @@ void MM1::modelingv2(double in, double u, size_t num) {
     size_t outCount = 0;
     delay = 0;
     meanQlen = 0;
+    emptyP1 = 0;
+    emptyP2 = 0;
     double t = 0;
     double tmp = 0;
     double time = 0;

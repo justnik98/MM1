@@ -29,7 +29,7 @@ private:
 
     double emptyP2 = 0;
 
-    double step = 0.01;
+    double step = 0.002;
 public:
     MM1() = default;
 
