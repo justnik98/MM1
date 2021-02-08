@@ -17,7 +17,7 @@ private:
     public:
         double arr = 0;
         double tU = 0;
-
+        double in = 0;
         msg(double in, double t) : arr(in), tU(t) {};
     };
 
@@ -29,8 +29,9 @@ private:
 
     double emptyP2 = 0;
 
+    double step = 0.01;
 public:
-    MM1() = default;;
+    MM1() = default;
 
     void theory(double in, double u);
 
