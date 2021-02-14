@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
     MM1 m;
-    size_t num = 20000;
+    size_t num = 50000;
     ofstream outt("mm1_delay_t.dat");
     ofstream out0("mm1_delay_p.dat");
     ofstream out1("xx1_delay_p.dat");
@@ -46,6 +46,10 @@ int main() {
     ofstream outnout1("xx1_nout_p.dat");
     ofstream outnout2("x1-x1_nout_p.dat");
 
+    ofstream outtu0("mm1_tu_p.dat");
+    ofstream outtu1("xx1_tu_p.dat");
+    ofstream outtu2("x1-x1_tu_p.dat");
+
     double u = 1;
     for (double in = 0.1; in < 0.91; in += 0.1) {
         m.theory(in, u);
@@ -64,6 +68,7 @@ int main() {
         outt20 << fixed << setprecision(3) << in / u << " " << m.getTau2() << endl;
         outnin0 << fixed << setprecision(3) << in / u << " " << m.getNIn() << endl;
         outnout0 << fixed << setprecision(3) << in / u << " " << m.getNOut() << endl;
+        outtu0 << fixed << setprecision(3) << in / u << " " << m.getMeanTU() << endl;
 
         m.modeling(in, u, num, 1);
         cout << fixed << setprecision(3) << m.getDelay() << " ::: ";
@@ -76,6 +81,7 @@ int main() {
         outt21 << fixed << setprecision(3) << in / u << " " << m.getTau2() << endl;
         outnin1 << fixed << setprecision(3) << in / u << " " << m.getNIn() << endl;
         outnout1 << fixed << setprecision(3) << in / u << " " << m.getNOut() << endl;
+        outtu1 << fixed << setprecision(3) << in / u << " " << m.getMeanTU() << endl;
 
         m.modeling(in, u, num, 2);
         cout << fixed << setprecision(3) << m.getDelay() << endl;
@@ -88,6 +94,7 @@ int main() {
         outt22 << fixed << setprecision(3) << in / u << " " << m.getTau2() << endl;
         outnin2 << fixed << setprecision(3) << in / u << " " << m.getNIn() << endl;
         outnout2 << fixed << setprecision(3) << in / u << " " << m.getNOut() << endl;
+        outtu2 << fixed << setprecision(3) << in / u << " " << m.getMeanTU() << endl;
 
     }
 }

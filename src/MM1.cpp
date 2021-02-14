@@ -17,7 +17,6 @@ void MM1::theoryN(double in, double u) {
 }
 
 void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
-    Random r;
     list<msg> q;
     vector<msg> m;
     size_t outCount = 0;
@@ -29,6 +28,7 @@ void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
     tau2 = 0;
     n_in = 0;
     n_out = 0;
+    meanTU = 0;
     size_t sum = 0;
     double t = 0;
     double tU = 0;
@@ -36,6 +36,7 @@ void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
         auto[t1, t2] = gen(in, u, rule);
         t += t1;
         tU = t2;
+        meanTU += tU;
         m.emplace_back(t, tU);
     }
     t = 0;
@@ -78,6 +79,7 @@ void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
     tau1 /= m.size();
     n_in /= m.size();
     n_out /= m.size();
+    meanTU /= m.size();
 }
 
 std::pair<double, double> MM1::gen(double in, double u, uint8_t rule) {

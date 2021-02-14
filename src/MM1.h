@@ -38,6 +38,8 @@ private:
 
     double n_out = 0;
 
+    double meanTU = 0;
+
     double step = 0.001;
 
     static std::pair<double, double> gen(double in, double u, uint8_t rule);
@@ -64,6 +66,8 @@ public:
     [[nodiscard]] double getNIn() const { return n_in; }
 
     [[nodiscard]] double getNOut() const { return n_out; }
+
+    [[nodiscard]] double getMeanTU() const { return meanTU; }
 
     void theoryN(double in, double u);
 };
