@@ -96,7 +96,7 @@ std::pair<double, double> MM1::gen(double in, double u, uint8_t rule) {
         case 1:
             do {
                 tmp = r.rnd();
-            } while (tmp == 0);
+            } while (tmp == 0 || tmp == 1);
             t1 = (-log(tmp) / in);
             t2 = (-log(1 - tmp) / u);
             break;
