@@ -27,6 +27,8 @@ void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
     emptyP2 = 0;
     tau1 = 0;
     tau2 = 0;
+    n_in = 0;
+    n_out = 0;
     size_t sum = 0;
     double t = 0;
     double tU = 0;
@@ -46,6 +48,7 @@ void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
                 } else {
                     tau1 += (q.front().in == 0 ? t : q.front().in) + q.front().tU - t;
                 }
+                n_in += q.size();
                 q.push_back(*it);
             } else break;
         }
@@ -62,6 +65,7 @@ void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
                 delay += t - q.front().arr;
                 outCount++;
                 q.pop_front();
+                n_out += q.size();
             }
         }
         t += step;
@@ -72,6 +76,8 @@ void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
     emptyP1 /= m.size();
     emptyP2 /= num;
     tau1 /= m.size();
+    n_in /= m.size();
+    n_out /= m.size();
 }
 
 std::pair<double, double> MM1::gen(double in, double u, uint8_t rule) {

@@ -34,6 +34,10 @@ private:
 
     double tau2 = 0;
 
+    double n_in = 0;
+
+    double n_out = 0;
+
     double step = 0.001;
 
     static std::pair<double, double> gen(double in, double u, uint8_t rule);
@@ -56,6 +60,10 @@ public:
     [[nodiscard]] double getTau1() const { return tau1; }
 
     [[nodiscard]] double getTau2() const { return tau2; }
+
+    [[nodiscard]] double getNIn() const { return n_in; }
+
+    [[nodiscard]] double getNOut() const { return n_out; }
 
     void theoryN(double in, double u);
 };
