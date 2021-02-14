@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
     MM1 m;
-    size_t num = 50000;
+    size_t num = 100000;
     ofstream outt("mm1_delay_t.dat");
     ofstream out0("mm1_delay_p.dat");
     ofstream out1("xx1_delay_p.dat");
@@ -50,6 +50,14 @@ int main() {
     ofstream outtu1("xx1_tu_p.dat");
     ofstream outtu2("x1-x1_tu_p.dat");
 
+    ofstream outT10("mm1_T1_p.dat");
+    ofstream outT11("xx1_T1_p.dat");
+    ofstream outT12("x1-x1_T1_p.dat");
+
+    ofstream outT20("mm1_T2_p.dat");
+    ofstream outT21("xx1_T2_p.dat");
+    ofstream outT22("x1-x1_T2_p.dat");
+
     double u = 1;
     for (double in = 0.1; in < 0.91; in += 0.1) {
         m.theory(in, u);
@@ -69,6 +77,8 @@ int main() {
         outnin0 << fixed << setprecision(3) << in / u << " " << m.getNIn() << endl;
         outnout0 << fixed << setprecision(3) << in / u << " " << m.getNOut() << endl;
         outtu0 << fixed << setprecision(3) << in / u << " " << m.getMeanTU() << endl;
+        outT10 << fixed << setprecision(3) << in / u << " " << m.getT1() << endl;
+        outT20 << fixed << setprecision(3) << in / u << " " << m.getT2() << endl;
 
         m.modeling(in, u, num, 1);
         cout << fixed << setprecision(3) << m.getDelay() << " ::: ";
@@ -82,6 +92,8 @@ int main() {
         outnin1 << fixed << setprecision(3) << in / u << " " << m.getNIn() << endl;
         outnout1 << fixed << setprecision(3) << in / u << " " << m.getNOut() << endl;
         outtu1 << fixed << setprecision(3) << in / u << " " << m.getMeanTU() << endl;
+        outT11 << fixed << setprecision(3) << in / u << " " << m.getT1() << endl;
+        outT21 << fixed << setprecision(3) << in / u << " " << m.getT2() << endl;
 
         m.modeling(in, u, num, 2);
         cout << fixed << setprecision(3) << m.getDelay() << endl;
@@ -95,6 +107,8 @@ int main() {
         outnin2 << fixed << setprecision(3) << in / u << " " << m.getNIn() << endl;
         outnout2 << fixed << setprecision(3) << in / u << " " << m.getNOut() << endl;
         outtu2 << fixed << setprecision(3) << in / u << " " << m.getMeanTU() << endl;
+        outT12 << fixed << setprecision(3) << in / u << " " << m.getT1() << endl;
+        outT22 << fixed << setprecision(3) << in / u << " " << m.getT2() << endl;
 
     }
 }
