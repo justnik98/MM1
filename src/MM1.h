@@ -18,6 +18,7 @@ private:
         double arr = 0;
         double tU = 0;
         double in = 0;
+
         msg(double in, double t) : arr(in), tU(t) {};
     };
 
@@ -29,7 +30,11 @@ private:
 
     double emptyP2 = 0;
 
-    double step = 0.002;
+    double tau1 = 0;
+
+    double tau2 = 0;
+
+    double step = 0.001;
 public:
     MM1() = default;
 
@@ -48,6 +53,10 @@ public:
     [[nodiscard]] double getEmptyP1() const { return emptyP1; }
 
     [[nodiscard]] double getEmptyP2() const { return emptyP2; }
+
+    [[nodiscard]] double getTau1() const { return tau1; }
+
+    [[nodiscard]] double getTau2() const { return tau2; }
 
     void theoryN(double in, double u);
 };

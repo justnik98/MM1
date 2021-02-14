@@ -43,6 +43,15 @@ int main() {
     ofstream outl0("mm1_delay_l_p.dat");
     ofstream outl1("xx1_delay_l_p.dat");
     ofstream outl2("x1-x1_delay_l_p.dat");
+
+    ofstream outt0("mm1_tau1_p.dat");
+    ofstream outt1("xx1_tau1_p.dat");
+    ofstream outt2("x1-x1_tau1_p.dat");
+
+    ofstream outt20("mm1_tau2_p.dat");
+    ofstream outt21("xx1_tau2_p.dat");
+    ofstream outt22("x1-x1_tau2_p.dat");
+
     double u = 1;
     for (double in = 0.1; in < 0.91; in += 0.1) {
         m.theory(in, u);
@@ -57,6 +66,8 @@ int main() {
         oute0_1 << fixed << setprecision(3) << in / u << " " << m.getEmptyP1() << endl;
         oute0_2 << fixed << setprecision(3) << in / u << " " << m.getEmptyP2() << endl;
         outl0 << fixed << setprecision(3) << in / u << " " << m.getMeanQlen() / in << endl;
+        outt0 << fixed << setprecision(3) << in / u << " " << m.getTau1() << endl;
+        outt20 << fixed << setprecision(3) << in / u << " " << m.getTau2() << endl;
 
         m.modelingv1(in, u, num);
         cout << fixed << setprecision(3) << m.getDelay() << " ::: ";
@@ -65,6 +76,8 @@ int main() {
         oute1_1 << fixed << setprecision(3) << in / u << " " << m.getEmptyP1() << endl;
         oute1_2 << fixed << setprecision(3) << in / u << " " << m.getEmptyP2() << endl;
         outl1 << fixed << setprecision(3) << in / u << " " << m.getMeanQlen() / in << endl;
+        outt1 << fixed << setprecision(3) << in / u << " " << m.getTau1() << endl;
+        outt21 << fixed << setprecision(3) << in / u << " " << m.getTau2() << endl;
 
         m.modelingv2(in, u, num);
         cout << fixed << setprecision(3) << m.getDelay() << endl;
@@ -73,6 +86,8 @@ int main() {
         oute2_1 << fixed << setprecision(3) << in / u << " " << m.getEmptyP1() << endl;
         oute2_2 << fixed << setprecision(3) << in / u << " " << m.getEmptyP2() << endl;
         outl2 << fixed << setprecision(3) << in / u << " " << m.getMeanQlen() / in << endl;
+        outt2 << fixed << setprecision(3) << in / u << " " << m.getTau1() << endl;
+        outt22 << fixed << setprecision(3) << in / u << " " << m.getTau2() << endl;
 
     }
 }

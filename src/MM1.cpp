@@ -20,7 +20,6 @@ void MM1::theoryN(double in, double u) {
 
 
 void MM1::modelingv0(double in, double u, size_t num) {
-
     Random r;
     list<msg> q;
     vector<msg> m;
@@ -29,6 +28,8 @@ void MM1::modelingv0(double in, double u, size_t num) {
     meanQlen = 0;
     emptyP1 = 0;
     emptyP2 = 0;
+    tau1 = 0;
+    tau2 = 0;
     size_t sum = 0;
     double t = 0;
     double tU = 0;
@@ -44,6 +45,8 @@ void MM1::modelingv0(double in, double u, size_t num) {
             if ((*it).arr < t) {
                 if (q.empty()) {
                     emptyP1 += 1;
+                } else {
+                    tau1 += (q.front().in == 0 ? t : q.front().in) + q.front().tU - t;
                 }
                 q.push_back(*it);
             } else break;
@@ -67,8 +70,10 @@ void MM1::modelingv0(double in, double u, size_t num) {
     }
     delay = delay / outCount;
     meanQlen = static_cast<double>(sum) * step / num;
+    tau2 = tau1 / (m.size() - emptyP1);
     emptyP1 /= m.size();
     emptyP2 /= num;
+    tau1 /= m.size();
 }
 
 void MM1::modelingv1(double in, double u, size_t num) {
@@ -80,6 +85,8 @@ void MM1::modelingv1(double in, double u, size_t num) {
     meanQlen = 0;
     emptyP1 = 0;
     emptyP2 = 0;
+    tau1 = 0;
+    tau2 = 0;
     double t = 0;
     double tmp = 0;
     double tU = 0;
@@ -93,17 +100,18 @@ void MM1::modelingv1(double in, double u, size_t num) {
     }
     t = 0;
     auto it = m.begin();
-    uint16_t percents = 0;
 
     while (t < num) {
         /*if ((t * 100.0 / num) >= (percents + 1)) {
             percents++;
             cout << "\r" << percents << "%";
         }*/
-        for (it; it != m.end(); ++it) {
+        for (; it != m.end(); ++it) {
             if ((*it).arr < t) {
                 if (q.empty()) {
                     emptyP1 += 1;
+                } else {
+                    tau1 += (q.front().in == 0 ? t : q.front().in) + q.front().tU - t;
                 }
                 q.push_back(*it);
             } else break;
@@ -127,8 +135,10 @@ void MM1::modelingv1(double in, double u, size_t num) {
     }
     delay /= outCount;
     meanQlen /= static_cast<double>(num) / step;
-    emptyP1 /= outCount;
+    tau2 = tau1 / (m.size() - emptyP1);
+    emptyP1 /= m.size();
     emptyP2 /= num;
+    tau1 /= m.size();
 }
 
 void MM1::modelingv2(double in, double u, size_t num) {
@@ -140,6 +150,8 @@ void MM1::modelingv2(double in, double u, size_t num) {
     meanQlen = 0;
     emptyP1 = 0;
     emptyP2 = 0;
+    tau1 = 0;
+    tau2 = 0;
     double t = 0;
     double tmp = 0;
     double time = 0;
@@ -155,17 +167,18 @@ void MM1::modelingv2(double in, double u, size_t num) {
     }
     t = 0;
     auto it = m.begin();
-    uint16_t percents = 0;
 
     while (t < num) {
         /*if ((t * 100.0 / num) >= (percents + 1)) {
             percents++;
             cout << "\r" << percents << "%";
         }*/
-        for (it; it != m.end(); ++it) {
+        for (; it != m.end(); ++it) {
             if ((*it).arr < t) {
                 if (q.empty()) {
                     emptyP1 += 1;
+                } else {
+                    tau1 += (q.front().in == 0 ? t : q.front().in) + q.front().tU - t;
                 }
                 q.push_back(*it);
             } else break;
@@ -189,6 +202,8 @@ void MM1::modelingv2(double in, double u, size_t num) {
     }
     delay /= outCount;
     meanQlen /= static_cast<double>(num) / step;
+    tau2 = tau1 / (m.size() - emptyP1);
     emptyP1 /= m.size();
     emptyP2 /= num;
+    tau1 /= m.size();
 }
