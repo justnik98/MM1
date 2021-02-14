@@ -18,6 +18,7 @@ private:
         double arr = 0;
         double tU = 0;
         double in = 0;
+
         msg(double in, double t) : arr(in), tU(t) {};
     };
 
@@ -29,17 +30,26 @@ private:
 
     double emptyP2 = 0;
 
-    double step = 0.002;
+    double tau1 = 0;
+
+    double tau2 = 0;
+
+    double n_in = 0;
+
+    double n_out = 0;
+
+    double meanTU = 0;
+
+    double step = 0.001;
+
+    static std::pair<double, double> gen(double in, double u, uint8_t rule);
+
 public:
     MM1() = default;
 
     void theory(double in, double u);
 
-    void modelingv0(double in, double u, size_t num);
-
-    void modelingv1(double in, double u, size_t num);
-
-    void modelingv2(double in, double u, size_t num);
+    void modeling(double in, double u, size_t num, uint8_t rule);
 
     [[nodiscard]] double getDelay() const { return delay; }
 
@@ -48,6 +58,16 @@ public:
     [[nodiscard]] double getEmptyP1() const { return emptyP1; }
 
     [[nodiscard]] double getEmptyP2() const { return emptyP2; }
+
+    [[nodiscard]] double getTau1() const { return tau1; }
+
+    [[nodiscard]] double getTau2() const { return tau2; }
+
+    [[nodiscard]] double getNIn() const { return n_in; }
+
+    [[nodiscard]] double getNOut() const { return n_out; }
+
+    [[nodiscard]] double getMeanTU() const { return meanTU; }
 
     void theoryN(double in, double u);
 };
