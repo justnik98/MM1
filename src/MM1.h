@@ -35,16 +35,15 @@ private:
     double tau2 = 0;
 
     double step = 0.001;
+
+    static std::pair<double, double> gen(double in, double u, uint8_t rule);
+
 public:
     MM1() = default;
 
     void theory(double in, double u);
 
-    void modelingv0(double in, double u, size_t num);
-
-    void modelingv1(double in, double u, size_t num);
-
-    void modelingv2(double in, double u, size_t num);
+    void modeling(double in, double u, size_t num, uint8_t rule);
 
     [[nodiscard]] double getDelay() const { return delay; }
 

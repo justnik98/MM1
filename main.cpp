@@ -5,20 +5,6 @@
 
 using namespace std;
 
-double rule0(double rnd) {
-    static Random r;
-    rnd = r.rnd();
-    return rnd;
-}
-
-double rule1(double rnd) {
-    return 1 - rnd;
-}
-
-double rule2(double rnd) {
-    return rnd;
-}
-
 int main() {
     MM1 m;
     size_t num = 1000000;
@@ -60,7 +46,7 @@ int main() {
         outt << fixed << setprecision(3) << in / u << " " << m.getDelay() << endl;
         outnt << fixed << setprecision(3) << in / u << " " << m.getMeanQlen() << endl;
 
-        m.modelingv0(in, u, num);
+        m.modeling(in, u, num, 0);
         out0 << fixed << setprecision(3) << in / u << " " << m.getDelay() << endl;
         outn0 << fixed << setprecision(3) << in / u << " " << m.getMeanQlen() << endl;
         oute0_1 << fixed << setprecision(3) << in / u << " " << m.getEmptyP1() << endl;
@@ -69,7 +55,7 @@ int main() {
         outt0 << fixed << setprecision(3) << in / u << " " << m.getTau1() << endl;
         outt20 << fixed << setprecision(3) << in / u << " " << m.getTau2() << endl;
 
-        m.modelingv1(in, u, num);
+        m.modeling(in, u, num, 1);
         cout << fixed << setprecision(3) << m.getDelay() << " ::: ";
         out1 << fixed << setprecision(3) << in / u << " " << m.getDelay() << endl;
         outn1 << fixed << setprecision(3) << in / u << " " << m.getMeanQlen() << endl;
@@ -79,7 +65,7 @@ int main() {
         outt1 << fixed << setprecision(3) << in / u << " " << m.getTau1() << endl;
         outt21 << fixed << setprecision(3) << in / u << " " << m.getTau2() << endl;
 
-        m.modelingv2(in, u, num);
+        m.modeling(in, u, num, 2);
         cout << fixed << setprecision(3) << m.getDelay() << endl;
         out2 << fixed << setprecision(3) << in / u << " " << m.getDelay() << endl;
         outn2 << fixed << setprecision(3) << in / u << " " << m.getMeanQlen() << endl;
