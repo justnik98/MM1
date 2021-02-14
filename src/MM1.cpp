@@ -47,7 +47,8 @@ void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
                 if (q.empty()) {
                     emptyP1 += 1;
                 } else {
-                    tau1 += (q.front().in == 0 ? t : q.front().in) + q.front().tU - t;
+                    it->tau = (q.front().in == 0 ? t : q.front().in) + q.front().tU - t;
+                    tau1 += it->tau;
                 }
                 n_in += q.size();
                 q.push_back(*it);
@@ -64,6 +65,7 @@ void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
             }
             if (t >= (q.front().in + q.front().tU)) {
                 delay += t - q.front().arr;
+                T1 += t - q.front().arr - q.front().tau - q.front().tU;
                 outCount++;
                 q.pop_front();
                 n_out += q.size();
@@ -74,6 +76,8 @@ void MM1::modeling(double in, double u, size_t num, uint8_t rule) {
     delay = delay / outCount;
     meanQlen = static_cast<double>(sum) * step / num;
     tau2 = tau1 / (m.size() - emptyP1);
+    T2 = T1 / (m.size() - emptyP1);
+    T1 /= m.size();
     emptyP1 /= m.size();
     emptyP2 /= num;
     tau1 /= m.size();

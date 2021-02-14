@@ -18,7 +18,7 @@ private:
         double arr = 0;
         double tU = 0;
         double in = 0;
-
+        double tau = 0;
         msg(double in, double t) : arr(in), tU(t) {};
     };
 
@@ -41,6 +41,10 @@ private:
     double meanTU = 0;
 
     double step = 0.001;
+
+    double T1 = 0;
+
+    double T2 = 0;
 
     static std::pair<double, double> gen(double in, double u, uint8_t rule);
 
@@ -68,6 +72,10 @@ public:
     [[nodiscard]] double getNOut() const { return n_out; }
 
     [[nodiscard]] double getMeanTU() const { return meanTU; }
+
+    [[nodiscard]] double getT1() const { return T1; }
+
+    [[nodiscard]] double getT2() const { return T2; }
 
     void theoryN(double in, double u);
 };
