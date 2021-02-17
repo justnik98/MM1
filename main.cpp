@@ -5,23 +5,10 @@
 
 using namespace std;
 
-double rule0(double rnd) {
-    static Random r;
-    rnd = r.rnd();
-    return rnd;
-}
-
-double rule1(double rnd) {
-    return 1 - rnd;
-}
-
-double rule2(double rnd) {
-    return rnd;
-}
-
 int main() {
     MM1 m;
-    size_t num = 10000;
+    size_t num = 100000;
+
     ofstream outn0("mm1_mqlen_p.dat");
     ofstream outn1("xx1_mqlen_p.dat");
     ofstream outn2("x1-x1_mqlen_p.dat");
@@ -29,11 +16,15 @@ int main() {
     double u = 1;
     for (double in = 0.1; in < 0.91; in += 0.1) {
 
-        m.modeling(in, u, num);
+        cout << in << endl;
+
+        m.modeling(in, u, num, 0);
         outn0 << fixed << setprecision(3) << in / u << " " << m.getMeanQLen() << endl;
 
+        m.modeling(in, u, num, 1);
         outn1 << fixed << setprecision(3) << in / u << " " << m.getMeanQLen() << endl;
 
+        m.modeling(in, u, num, 2);
         outn2 << fixed << setprecision(3) << in / u << " " << m.getMeanQLen() << endl;
     }
 }

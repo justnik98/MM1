@@ -2,15 +2,16 @@
 #include "Random.h"
 
 Random::Random() {
-    for (size_t i = 0; i < p; ++i) {
-        X[i] = i;
+    srand(time(NULL));
+    for (size_t j = 0; j < p; ++j) {
+        X[j] = rand();
     }
 }
 
 Random::Random(uint32_t seed) {
     srand(seed);
-    for (size_t i = 0; i < p; ++i) {
-        X[i] = std::rand();
+    for (unsigned int & i : X) {
+        i = std::rand();
     }
 }
 
