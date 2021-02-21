@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
     MM1 m;
-    size_t num = 100000;
+    size_t num = 1000000;
     ofstream outt("mm1_delay_t.dat");
     ofstream out0("mm1_delay_p.dat");
     ofstream out1("xx1_delay_p.dat");
@@ -109,6 +109,5 @@ int main() {
         outtu2 << fixed << setprecision(3) << in / u << " " << m.getMeanTU() << endl;
         outT12 << fixed << setprecision(3) << in / u << " " << m.getT1() << endl;
         outT22 << fixed << setprecision(3) << in / u << " " << m.getT2() << endl;
-
     }
 }

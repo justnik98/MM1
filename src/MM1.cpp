@@ -102,7 +102,7 @@ std::pair<double, double> MM1::gen(double in, double u, uint8_t rule) {
                 tmp = r.rnd();
             } while (tmp == 0 || tmp == 1);
             t1 = (-log(tmp) / in);
-            t2 = (-log(1 - tmp) / u);
+            t2 = (-log(tmp) / u);
             break;
 
         case 2:
@@ -110,7 +110,7 @@ std::pair<double, double> MM1::gen(double in, double u, uint8_t rule) {
                 tmp = r.rnd();
             } while (tmp == 0);
             t1 = (-log(tmp) / in);
-            t2 = (-log(tmp) / u);
+            t2 = (-log(1 - tmp) / u);
             break;
 
         default:
