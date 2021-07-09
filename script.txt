@@ -2,83 +2,83 @@
 set xlabel "{/Symbol l}/u"
 set yrange [0:10] 
 set title "Average delay"
- plot "mm1_delay_t.dat" title "Theory M/M/1" lt 1 with lines, "mm1_delay_p.dat" title "M/M/1" lt 2 with lines, "x1-x1_delay_p.dat" title "X/1-X/1" lt 3 with lines, "xx1_delay_p.dat" title "X/X/1" lt 4 with lines
+ plot  "mm1_delay_p.dat" title "GI/GI/1" ls 1 with lines, "x1-x1_delay_p.dat" title "N/-N/1" ls 2 with lines, "xx1_delay_p.dat" title "N/N/1" ls 3 with lines
  
 ####Qlen###
 set xlabel "{/Symbol l}/u"
 set yrange [0:10]
 set title "Average queue length"
- plot "mm1_mqlen_t.dat" title "Theory M/M/1" lt 1 with lines, "mm1_mqlen_p.dat" title "M/M/1" lt 2 with lines, "x1-x1_mqlen_p.dat" title "X/1-X/1" lt 3 with lines, "xx1_mqlen_p.dat" title "X/X/1" lt 4 with lines
+ plot  "mm1_mqlen_p.dat" title "GI/GI/1" ls 1 with lines, "x1-x1_mqlen_p.dat" title "N/-N/1" ls 2 with lines, "xx1_mqlen_p.dat" title "N/N/1" ls 3 with lines
  
  ###EmptyQ_1###
 set xlabel "{/Symbol l}/u"
 set yrange [0:1] 
 set title "Empty queue P_1"
- plot  "mm1_emptyP1_p.dat" title "M/M/1" lt 2 with lines, "x1-x1_emptyP1_p.dat" title "X/1-X/1" lt 3 with lines, "xx1_emptyP1_p.dat" title "X/X/1" lt 4 with lines
+ plot  "mm1_emptyP1_p.dat" title "GI/GI/1" ls 1 with lines, "x1-x1_emptyP1_p.dat" title "N/-N/1" ls 2 with lines, "xx1_emptyP1_p.dat" title "N/N/1" ls 3 with lines
  
   ###EmptyQ_2###
 set xlabel "{/Symbol l}/u"
 set yrange [0:1] 
 set title "Empty queue P_2"
- plot "mm1_emptyP2_p.dat" title "M/M/1" lt 2 with lines, "x1-x1_emptyP2_p.dat" title "X/1-X/1" lt 3 with lines, "xx1_emptyP2_p.dat" title "X/X/1" lt 4 with lines
+ plot "mm1_emptyP2_p.dat" title "M/M/1" ls 1 with lines, "x1-x1_emptyP2_p.dat" title "X/1-X/1" ls 2 with lines, "xx1_emptyP2_p.dat" title "X/X/1" ls 3 with lines
  
   ###Average delay Littles law###
 set xlabel "{/Symbol l}/u"
 set yrange [0:10] 
 set title "Average delay Little's law"
- plot "mm1_delay_l_p.dat" title "M/M/1 Little's law" lt 2 w linespoints, "x1-x1_delay_l_p.dat" title "X/1-X/1 Little's law" lt 3 w linespoints, "xx1_delay_l_p.dat" title "X/X/1 Little's law" lt 4 w linespoints, "mm1_delay_p.dat" title "M/M/1" lt 10 w linespoints, "x1-x1_delay_p.dat" title "X/1-X/1" lt 8 with lines, "xx1_delay_p.dat" title "X/X/1" lt 11 w linespoints
+ plot "mm1_delay_l_p.dat" title "GI/GI/1 Little's law" ls 1 w linespoints, "x1-x1_delay_l_p.dat" title "N/-N/1 Little's law" ls 2 w linespoints, "xx1_delay_l_p.dat" title "N/N/1 Little's law" ls 3 w linespoints, "mm1_delay_p.dat" title "GI/GI/1" lt 10 w linespoints, "x1-x1_delay_p.dat" title "N/-N/1" lt 8 with lines, "xx1_delay_p.dat" title "N/N/1" lt 11 w linespoints
  
  
  ####Tau1###
 set xlabel "{/Symbol l}/u"
 set yrange [0:1]
 set title "Tau1"
- plot "mm1_tau1_p.dat" title "M/M/1" lt 2 with lines, "x1-x1_tau1_p.dat" title "X/1-X/1" lt 3 with lines, "xx1_tau1_p.dat" title "X/X/1" lt 4 with lines
+ plot "mm1_tau1_p.dat" title "M/M/1" ls 1 with lines, "x1-x1_tau1_p.dat" title "X/1-X/1" ls 2 with lines, "xx1_tau1_p.dat" title "X/X/1" ls 3 with lines
  
   ####Tau2###
 set xlabel "{/Symbol l}/u"
 set yrange [0:2]
 set title "Tau2"
- plot "mm1_tau2_p.dat" title "M/M/1" lt 2 with lines, "x1-x1_tau2_p.dat" title "X/1-X/1" lt 3 with lines, "xx1_tau2_p.dat" title "X/X/1" lt 4 with lines
+ plot "mm1_tau2_p.dat" title "M/M/1" ls 1 with lines, "x1-x1_tau2_p.dat" title "X/1-X/1" ls 2 with lines, "xx1_tau2_p.dat" title "X/X/1" ls 3 with lines
  
 
 ####Qlen M/M/1###
 set xlabel "{/Symbol l}/u"
 set yrange [0:10]
 set title "Average queue length M/M/1"
- plot "mm1_mqlen_p.dat" title "M/M/1" lt 2 with lines, "mm1_nin_p.dat" title "M/M/1 msg arrived" lt 3 with lines, "mm1_nout_p.dat" title "M/M/1 msg sent" lt 4 with lines
+ plot "mm1_mqlen_p.dat" title "M/M/1" ls 1 with lines, "mm1_nin_p.dat" title "M/M/1 msg arrived" ls 2 with lines, "mm1_nout_p.dat" title "M/M/1 msg sent" ls 3 with lines
  
  
 ####Qlen X/1-X/1###
 set xlabel "{/Symbol l}/u"
 set yrange [0:10]
 set title "Average queue length X/1-X/1"
- plot "x1-x1_mqlen_p.dat" title "X/1-X/1" lt 2 with lines, "x1-x1_nin_p.dat" title "X/1-X/1 msg arrived" lt 3 with lines, "x1-x1_nout_p.dat" title "X/1-X/1 msg sent" lt 4 with lines
+ plot "x1-x1_mqlen_p.dat" title "X/1-X/1" ls 1 with lines, "x1-x1_nin_p.dat" title "X/1-X/1 msg arrived" ls 2 with lines, "x1-x1_nout_p.dat" title "X/1-X/1 msg sent" ls 3 with lines
 
 
 ####Qlen X/X/1###
 set xlabel "{/Symbol l}/u"
 set yrange [0:10]
 set title "Average queue length X/X/1"
- plot "xx1_mqlen_p.dat" title "X/X/1" lt 2 with lines, "xx1_nin_p.dat" title "X/X/1 msg arrived" lt 3 with lines, "xx1_nout_p.dat" title "X/X/1 msg sent" lt 4 with lines
+ plot "xx1_mqlen_p.dat" title "X/X/1" ls 1 with lines, "xx1_nin_p.dat" title "X/X/1 msg arrived" ls 2 with lines, "xx1_nout_p.dat" title "X/X/1 msg sent" ls 3 with lines
  
 
 ####Time of service###
 set xlabel "{/Symbol l}/u"
 set yrange [0:2] 
 set title "Average time of service"
- plot "mm1_tu_p.dat" title "M/M/1" lt 2 with lines, "x1-x1_tu_p.dat" title "X/1-X/1" lt 3 with lines, "xx1_tu_p.dat" title "X/X/1" lt 4 with lines
+ plot "mm1_tu_p.dat" title "GI/GI/1" ls 1 with lines, "x1-x1_tu_p.dat" title "N/-N/1" ls 2 with lines, "xx1_tu_p.dat" title "N/N/1" ls 3 with lines
  
  
   ####T1###
 set xlabel "{/Symbol l}/u"
 set yrange [0:10]
 set title "T1"
- plot "mm1_T1_p.dat" title "M/M/1" lt 2 with lines, "x1-x1_T1_p.dat" title "X/1-X/1" lt 3 with lines, "xx1_T1_p.dat" title "X/X/1" lt 4 with lines
+ plot "mm1_T1_p.dat" title "M/M/1" ls 1 with lines, "x1-x1_T1_p.dat" title "X/1-X/1" ls 2 with lines, "xx1_T1_p.dat" title "X/X/1" ls 3 with lines
  
   ####T2###
 set xlabel "{/Symbol l}/u"
 set yrange [0:10]
 set title "T2"
- plot "mm1_T2_p.dat" title "M/M/1" lt 2 with lines, "x1-x1_T2_p.dat" title "X/1-X/1" lt 3 with lines, "xx1_T2_p.dat" title "X/X/1" lt 4 with lines
+ plot "mm1_T2_p.dat" title "M/M/1" ls 1 with lines, "x1-x1_T2_p.dat" title "X/1-X/1" ls 2 with lines, "xx1_T2_p.dat" title "X/X/1" ls 3 with lines
  

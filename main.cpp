@@ -3,13 +3,12 @@
 #include <fstream>
 #include "src/MM1.h"
 #include "src/Random.h"
-#include "src/theory.h"
 
 using namespace std;
 
 int main() {
     MM1 m;
-    size_t num = 1000000;
+    size_t num = 100000;
     ofstream outt("mm1_delay_t.dat");
     ofstream out0("mm1_delay_p.dat");
     ofstream out1("xx1_delay_p.dat");
@@ -61,48 +60,13 @@ int main() {
     ofstream outT22("x1-x1_T2_p.dat");
 
     double u = 1;
-    int nums = 1000000;
+
 
     for (double in = 0.1; in < 0.91; in += 0.1) {
         double cov1 = 0;
         double cov2 = 0;
-        double sigmax1 = 0;
-        double sigmax2 = 0;
-        double sigmay1 = 0;
-        double sigmay2 = 0;
         Random r;
-        for (auto i = 0; i < nums; ++i) {
 
-            double k = r.rnd();
-            double x1 = -log(k);
-            double x2 = -log(k);
-            double y1 = -log(k);
-            double y2 = -log(1 - k);
-            sigmax1 += pow((x1 - 1 / in), 2);
-            sigmax2 += pow((x2 - 1 / in), 2);
-            sigmay1 += pow((y1 - 1 / u), 2);
-            sigmay2 += pow((y2 - 1 / u), 2);
-            cov1 += (x1 - 1 / in) * (y1 - 1 / u);
-            cov2 += (x2 - 1 / in) * (y2 - 1 / u);
-        }
-        sigmax1 /= nums;
-        sigmax2 /= nums;
-        sigmay1 /= nums;
-        sigmay2 /= nums;
-
-        sigmax1 = pow(sigmax1, 0.5);
-        sigmax2 = pow(sigmax2, 0.5);
-        sigmay1 = pow(sigmay1, 0.5);
-        sigmay2 = pow(sigmay2, 0.5);
-        cov1 /= nums;
-        cov2 /= nums;
-        cout << "lambda:" << in << endl;
-        cout << " pos Covariance: " << cov1 << " neg Covariance: " << cov2 << endl;
-        cout << " pos: " << cov1 / (sigmax1 * sigmay1) << " neg: " << cov2 / (sigmax2 * sigmay2) << endl;
-        cout << " pos q : " << qLen(in, u, cov1) << " neg q : " << qLen(in, u, cov2) << " no corr: " << qLen(in, u, 0.0) << endl;
-        outnt << in/u << " " << qLen(in, u, 0.0) << endl;
-        cout << endl;
-        continue;
         m.theory(in, u);
         m.theoryN(in, u);
         cout << fixed << setprecision(3) << in / u << " ::: " << m.getDelay() << " ::: ";

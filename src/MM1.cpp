@@ -90,27 +90,32 @@ std::pair<double, double> MM1::gen(double in, double u, uint8_t rule) {
     Random r;
     double t1 = 0;
     double t2 = 0;
-    double tmp;
+    double tmp, tmp2;
     switch (rule) {
         case 0:
-            t1 = r.randExp(in);
-            t2 = r.randExp(u);
+            //t1 = r.randExp(in);
+            //t2 = r.randExp(u);
+            t1 = pow(2.718281828, r.randGaussian(log(1.0/in)-0.5, 1));
+            t2 = pow(2.718281828, r.randGaussian(log(1.0/u)-0.5, 1));
             break;
 
         case 1:
-            do {
-                tmp = r.rnd();
-            } while (tmp == 0 || tmp == 1);
-            t1 = (-log(tmp) / in);
-            t2 = (-log(tmp) / u);
+            //tmp = r.rnd();
+            //t1 = -log(tmp) / in;
+            //t2 = -log(tmp) / u;
+            tmp = r.randGaussian(log(1.0/in)-0.5, 1);
+            t1 = pow(2.718281828, tmp);
+            t2 = pow(2.718281828, tmp-log(1.0/in)+log(1.0/u));
             break;
 
         case 2:
-            do {
-                tmp = r.rnd();
-            } while (tmp == 0);
-            t1 = (-log(tmp) / in);
-            t2 = (-log(1 - tmp) / u);
+            //tmp = r.rnd();
+            //t1 = -log(tmp) / in;
+            //t2 = -log(1 - tmp) / u;
+            tmp = r.randGaussian(log(1.0/in)-0.5, 1);
+            tmp2 =  -tmp + 2*(log(1.0/in)-0.5);
+            t1 = pow(2.718281828, tmp);
+            t2 = pow(2.718281828, (tmp2-log(1.0/in)+log(1.0/u))) ;
             break;
 
         default:

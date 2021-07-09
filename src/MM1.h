@@ -40,7 +40,7 @@ private:
 
     double meanTU = 0;
 
-    double step = 0.001;
+    double step = 0.01;
 
     double T1 = 0;
 
